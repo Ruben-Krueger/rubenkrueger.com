@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | Create Next App",
+  title: "About | Ruben Krueger",
 };
 
 export default function AboutLayout({
