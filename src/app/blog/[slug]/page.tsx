@@ -5,17 +5,9 @@ import { getAllPostIds, getPostData } from '../../../lib/markdown';
 import { format } from 'date-fns';
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
-}
-
-function Tag({ tag }: { tag: string }) {
-  return (
-    <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
-      {tag}
-    </span>
-  );
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -55,14 +47,6 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
               <time className="text-white mb-2 sm:mb-0">
                 {format(new Date(post.date), 'MMMM d, yyyy')}
               </time>
-
-              {post.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <Tag key={tag} tag={tag} />
-                  ))}
-                </div>
-              )}
             </div>
 
             {post.description && (
