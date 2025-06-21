@@ -6,25 +6,23 @@ import { format } from 'date-fns';
 
 function Preview({ post }: { post: BlogPost }): JSX.Element {
   return (
-    <article
-      key={post.id}
-      className="border border-neutral-800 rounded-lg p-6 transition-colors hover:border-neutral-700"
+    <a
+      href={`/blog/${post.id}`}
+      className="transition-colors hover:text-neutral-300"
     >
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-        <h2 className="text-xl font-semibold mb-2 sm:mb-0">
-          <a
-            href={`/blog/${post.id}`}
-            className="transition-colors hover:text-neutral-300"
-          >
-            {post.title}
-          </a>
-        </h2>
-        <time className="text-neutral-500 mb-2 sm:mb-0">
-          {format(new Date(post.date), 'MMMM d, yyyy')}
-        </time>
-      </div>
-      <p className="text-neutral-400 mb-4">{post.description}</p>
-    </article>
+      <article
+        key={post.id}
+        className="border border-neutral-800 rounded-lg p-6 transition-colors hover:border-neutral-700"
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+          <h2 className="text-xl font-semibold mb-2 sm:mb-0">{post.title}</h2>
+          <time className="text-neutral-500 mb-2 sm:mb-0">
+            {format(new Date(post.date), 'MMMM d, yyyy')}
+          </time>
+        </div>
+        <p className="text-neutral-400 mb-4">{post.description}</p>
+      </article>
+    </a>
   );
 }
 
